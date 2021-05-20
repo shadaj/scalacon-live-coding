@@ -1,0 +1,5 @@
+target/
+*.pt
+.vscode/
+corpus/
+project/project/
