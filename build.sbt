@@ -1,8 +1,8 @@
-name := "cookiemonster-scalapy"
+name := "scalacon-live-coding"
 
 scalaVersion := "2.13.5"
 
-libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.4.2+31-53a8dd5e+20210518-1633"
+libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.0"
 libraryDependencies += "org.scalameta" %% "scalameta" % "4.4.17"
 libraryDependencies += "com.lihaoyi" %% "fansi" % "0.2.14"
 

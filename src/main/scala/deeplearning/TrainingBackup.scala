@@ -68,7 +68,7 @@ object TrainingBackup extends App {
   val epochs = 1
 
   PipeStep.run(PipeStep.sequence((1 to epochs).map { epoch =>
-    PipeStep.grouped(batches.zipWithIndex.map { case (b, i) =>
+    PipeStep.grouped(batches.map { b =>
       PipeStep.unit(py.local {
         val inputIds = th.as[py.Dynamic].stack(b.map(e => e.bracketAccess("input_ids")).toPythonCopy).to(device)
         val attentionMasks = th.as[py.Dynamic].stack(b.map(e => e.bracketAccess("attention_mask")).toPythonCopy).to(device)
@@ -92,4 +92,7 @@ object TrainingBackup extends App {
   }, "epoch"))
 
   th.as[py.Dynamic].save(gpt2.state_dict(), "gpt_model.pt")
+  println("model saved!")
+
+  Runtime.getRuntime().halt(0)
 }

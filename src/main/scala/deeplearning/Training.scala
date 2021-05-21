@@ -31,7 +31,7 @@ object Training extends App {
     val input = Input.VirtualFile(path.toString, text)
     val tree = input.parse[Source].get
     
-    // TODO: get training data with tree.collect
+    // TODO: get training data with tree.collect (defns and Term.Block)
     ???
   }.toSeq
 
@@ -67,4 +67,7 @@ object Training extends App {
   // gpt2 takes input_ids, keyword labels, attention_mask, token_type_ids = None
 
   th.as[py.Dynamic].save(gpt2.state_dict(), "gpt_model.pt")
+  println("model saved!")
+
+  Runtime.getRuntime().halt(0)
 }
